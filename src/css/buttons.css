@@ -1,0 +1,129 @@
+.primary-button,
+.secondary-button {
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 40px;
+  gap: 10px;
+
+  background: #ffffff;
+  color: #5d279e;
+  border: 3px solid #ffffff;
+  border-radius: 64px;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+
+  overflow: hidden;
+
+  cursor: pointer;
+  box-sizing: border-box;
+
+  min-width: 228px;
+}
+
+.mobile .primary-button,
+.mobile .secondary-button {
+  min-width: 216px;
+  padding: 7px 40px;
+}
+
+.primary-button:hover,
+.primary-button:active {
+  background: transparent;
+  color: #ffffff;
+}
+
+.primary-button:disabled,
+.primary-button.disabled,
+.secondary-button:disabled,
+.secondary-button.disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.secondary-button {
+  color: #5d279e;
+  border-color: #5d279e;
+  background: transparent;
+}
+
+.secondary-button:hove,
+.secondary-button:active {
+  color: #5d279e;
+  border-color: #ffffff;
+  background: ffffff;
+}
+.secondary-button:active {
+  background: #fff;
+  color: #5d279e;
+}
+
+.primary-button.inverted {
+  color: #ffffff;
+  border-color: #5d279e;
+  background: #5d279e;
+}
+
+.primary-button.inverted:hover,
+.primary-button.inverted:active {
+  color: #ffffff;
+  border-color: #783fc7;
+  background: #783fc7;
+}
+
+.primary-button.small,
+.secondary-button.small {
+  padding: 7px 36px !important;
+}
+
+.primary-button.large,
+.secondary-button.large {
+  padding: 14px 48px !important;
+}
+
+.mobile .primary-button.large,
+.mobile .secondary-button.large {
+  padding: 10px 24px !important;
+}
+
+.button-group {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+.mobile .button-group {
+  width: auto;
+  flex-direction: column;
+  flex-direction: column-reverse;
+  gap: 14px;
+}
+
+.g-checkbox {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
+  padding: 10px;
+
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+
+  cursor: pointer;
+}

@@ -1,0 +1,224 @@
+.game h1 {
+  font-family: "BlocWebExtraCondensed";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 36px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.game .mobile h1 {
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.game h2 {
+  font-family: "BlocWebExtraCondensed";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 32px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.game .mobile h2 {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.game .scores-info-plate h2 {
+  font-size: 30px;
+  line-height: 28px;
+  font-weight: 500;
+}
+
+.game h3 {
+  font-family: "BlocWebExtraCondensed";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.game .mobile h3 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.game .scores-info-plate h3 {
+  font-size: 20px;
+}
+
+.game p {
+  font-family: "BlocWebExtraCondensed";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  margin: 0;
+}
+
+.game .mobile p {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.game p.small {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.game .mobile p.small {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.game .primary-button,
+.game .secondary-button {
+  font-family: "BlocWebExtraCondensed";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.game .mobile .primary-button,
+.game .mobile .secondary-button {
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.game .large {
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.game .mobile .large {
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.game .display {
+  font-family: "BlocWebExtraCondensed";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 34px;
+}
+
+.game .score-value {
+  font-family: "BlocWebExtraCondensed";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 48px;
+}
+
+.game .score-title {
+  font-family: "BlocWebExtraCondensed";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.game .table {
+  font-family: "BlocWebExtraCondensed";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.game .bold {
+  font-weight: 800 !important;
+}
+
+.game .caps {
+  text-transform: uppercase;
+}
+
+.game li {
+  list-style: none;
+  text-transform: uppercase;
+  font-family: "BlocWebExtraCondensed";
+  font-style: normal;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.g4-select-title {
+  position: absolute;
+  font-family: "BlocWebExtraCondensed";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 135%;
+  text-align: center;
+  color: #ffffff;
+}
+
+.mobile .g4-select-title {
+  font-size: 24px;
+}
+
+.g4-select-subtitle {
+  font-family: "BlocWebExtraCondensed";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 135%;
+  text-align: center;
+  color: #6c1100;
+}
+
+.mobile .g4-select-subtitle {
+  font-size: 24px;
+}
+
+.g4-select-hint {
+  font-family: "BlocWebExtraCondensed";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 135%;
+  text-align: center;
+  color: #ffffff;
+}
+
+.mobile .g4-select-hint {
+  font-size: 18px;
+}
+
+.g3-hint {
+  font-family: "BlocWebExtraCondensed";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.mobile .g3-hint {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.g-checkbox p {
+  font-family: "BlocWebExtraCondensed";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 145%;
+  color: #5d279e;
+}

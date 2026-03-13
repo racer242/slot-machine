@@ -1,0 +1,227 @@
+.gamePage {
+  position: absolute;
+  display: block;
+  left: 0%;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  user-select: none;
+}
+
+.gameScene {
+  position: absolute;
+  display: block;
+  left: 0%;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+
+  -webkit-touch-callout: none !important;
+  touch-action: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  caret-color: transparent;
+}
+
+.g1 .gameScene {
+  background-color: #fff;
+}
+
+.countdown {
+  position: absolute;
+  pointer-events: none;
+
+  width: 72px;
+  height: 72px;
+  left: 24px;
+  top: 24px;
+  display: block;
+  isolation: isolate;
+  box-sizing: border-box;
+}
+
+.mobile .countdown {
+  transform: scale(1.1);
+}
+
+.score {
+  position: absolute;
+  pointer-events: none;
+
+  width: 132px;
+  height: 72px;
+  right: 24px;
+  top: 24px;
+
+  background-color: rgba(255, 255, 255, 0.9);
+  background-position: 10px center;
+  background-repeat: no-repeat;
+  border-radius: 36px;
+  display: block;
+  isolation: isolate;
+  box-sizing: border-box;
+  padding-left: 50px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.mobile .score {
+  transform: scale(1.1);
+}
+
+.bonus-box {
+  position: absolute;
+  display: block;
+  width: 150px;
+  height: 150px;
+  transition-property: transform, opacity, left, top;
+  pointer-events: none;
+  z-index: 30;
+}
+
+.bonus {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 150px;
+  height: 150px;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  transform: translate(-50%, -25%);
+  font-family: "BlocWebExtraCondensed";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 32px;
+}
+
+.g1 .bonus {
+  background-image: url(../images/game1/bonus.svg);
+  color: #fff;
+}
+.g1 .bonus.negative {
+  color: #ff49b8;
+}
+
+.g1 .score {
+  color: #ea49ff;
+}
+
+.g1 .countdown {
+  color: #8755ea;
+}
+
+.g1 .countdown .progress-bar__background {
+  stroke: #8755ea;
+}
+
+.g1 .countdown .progress-bar__progress {
+  stroke: #fff;
+}
+
+.score-decor {
+  position: absolute;
+  animation: pulse 3s ease-in-out infinite;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.score-decor.item-1 {
+  left: 28px;
+  top: 13px;
+  width: 8px;
+  height: 8px;
+  background-image: url(../images/score-decor1.svg);
+}
+.score-decor.item-2 {
+  left: 43px;
+  top: 13px;
+  width: 11px;
+  height: 11px;
+  background-image: url(../images/score-decor2.svg);
+}
+.score-decor.item-3 {
+  left: 56px;
+  top: 49px;
+  width: 8px;
+  height: 9px;
+  background-image: url(../images/score-decor3.svg);
+}
+.score-decor.item-4 {
+  left: 14px;
+  top: 16px;
+  width: 53px;
+  height: 46px;
+  background-image: url(../images/score-decor4.svg);
+  animation: small-pulse 1s ease-in-out infinite;
+}
+.score-decor.item-5 {
+  left: 12px;
+  top: 20px;
+  width: 15px;
+  height: 15px;
+  background-image: url(../images/score-decor5.svg);
+}
+
+/* Индивидуальные настройки для каждого блока */
+.score-decor:nth-child(1) {
+  animation-duration: 2.4s;
+  animation-delay: 0.1s;
+}
+
+.score-decor:nth-child(2) {
+  animation-duration: 3.1s;
+  animation-delay: 0.5s;
+}
+
+.score-decor:nth-child(3) {
+  animation-duration: 2.7s;
+  animation-delay: 0.3s;
+}
+
+.score-decor:nth-child(4) {
+  animation-duration: 3.5s;
+  animation-delay: 0.7s;
+}
+
+.score-decor:nth-child(5) {
+  animation-duration: 2.9s;
+  animation-delay: 0.2s;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(-0px, -1px) rotate(-2deg) scale(1.3);
+  }
+  50% {
+    transform: translate(1px, -1px) rotate(3deg) scale(1.2);
+  }
+  75% {
+    transform: translate(-1px, 0px) rotate(-1.5deg) scale(1.1);
+  }
+}
+@keyframes small-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
