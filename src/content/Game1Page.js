@@ -209,6 +209,7 @@ class Game1Page extends GamePage {
 
   render() {
     // console.log(this.state.step, this.state);
+    console.log(this.state.step);
 
     let giftParticles = [];
     if (this.state.showWin) {
@@ -240,12 +241,10 @@ class Game1Page extends GamePage {
             </div>
             <div className="slotMachineHandle handleMotion"></div>
             <div className="slotMachine">
-              {this.state.showWin && (
-                <>
-                  <div className="slotMachineLights odd lights"></div>
-                  <div className="slotMachineLights even lights"></div>
-                </>
-              )}
+              <div className="appear-visible">
+                <div className="slotMachineLights odd lights"></div>
+                <div className="slotMachineLights even lights"></div>
+              </div>
             </div>
             <div className="slotMachineSlotsContainer">
               <div

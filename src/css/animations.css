@@ -425,6 +425,24 @@
   }
 }
 
+.appear-visible {
+  animation: appear-visible 100ms linear 2s;
+  animation-fill-mode: forwards;
+  will-change: contents;
+  visibility: hidden;
+}
+@keyframes appear-visible {
+  0% {
+    visibility: hidden;
+  }
+  90% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+
 .infinite {
   animation-iteration-count: infinite !important;
 }
@@ -453,9 +471,12 @@
 .delay3s {
   animation-delay: 2s !important;
 }
+.delay4s {
+  animation-delay: 2s !important;
+}
 
 .lights.odd {
-  animation: lights 500ms ease-out infinite;
+  animation: lights 500ms ease-out infinite 2s;
 }
 @keyframes lights {
   0% {
@@ -476,7 +497,7 @@
 }
 
 .lights.even {
-  animation: lights-even 500ms ease-out infinite;
+  animation: lights-even 500ms ease-out infinite 2s;
 }
 @keyframes lights-even {
   0% {
