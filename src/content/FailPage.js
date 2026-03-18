@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { setStoreData } from "../actions/appActions";
 
-class WinPage extends Component {
+class FailPage extends Component {
   constructor(props) {
     super(props);
 
@@ -25,22 +25,17 @@ class WinPage extends Component {
   }
 
   render() {
-    let giftParticles = [];
-    for (let i = 0; i < this.state.game1.giftParticlesCount; i++) {
-      giftParticles.push(<div key={"p" + i} className="g1-gift"></div>);
-    }
     return (
       <div className={"finishPage common g" + this.state.gameIndex}>
         <div className="pageTitle">
-          <h1 className="caps appear-zoom">Бинго!</h1>
+          <h1 className="caps appear-zoom">Эх...</h1>
         </div>
 
         <div className="plate appear-top">
-          <div className="g1-gifting-container">{giftParticles}</div>
-          <div className="redStripe appear-expand delay1s"></div>
-          <h1 className="appear-zoom-out delay300ms">X2</h1>
-          <p className="appear-bottom caps delay800ms">
-            Твои шансы на главный приз удвоены!
+          <div className="failSmile appear-zoom"></div>
+          <p className="appear-bottom caps delay300ms">
+            К сожалению,
+            <br />в этот раз не получилось.
           </p>
         </div>
 
@@ -83,4 +78,4 @@ class WinPage extends Component {
   }
 }
 
-export default WinPage;
+export default FailPage;

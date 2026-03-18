@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import MainPage from "../content/MainPage";
-import ScoresPage from "../content/ScoresPage";
 import Game1Page from "../content/Game1Page";
 import Main1Page from "../content/Main1Page";
-import Finish1Page from "../content/Finish1Page";
 import WinPage from "../content/WinPage";
+import FailPage from "../content/FailPage";
 
 class PageStack extends Component {
   constructor(props) {
@@ -53,10 +51,9 @@ class PageStack extends Component {
             <h1 className="caps">Ипотечное бинго</h1>
           </div>
         )}
-        {this.state.currentPage === "main" &&
-          ((this.state.gameIndex == 1 && (
-            <Main1Page bounds={this.props.bounds} store={this.store} />
-          )) || <MainPage bounds={this.props.bounds} store={this.store} />)}
+        {this.state.currentPage === "main" && this.state.gameIndex == 1 && (
+          <Main1Page bounds={this.props.bounds} store={this.store} />
+        )}
 
         {this.state.currentPage === "game" && this.state.gameIndex == 1 && (
           <Game1Page bounds={this.props.bounds} store={this.store} />
@@ -65,7 +62,7 @@ class PageStack extends Component {
           <WinPage bounds={this.props.bounds} store={this.store} />
         )}
         {this.state.currentPage === "fail" && (
-          <Finish1Page bounds={this.props.bounds} store={this.store} />
+          <FailPage bounds={this.props.bounds} store={this.store} />
         )}
       </div>
     );

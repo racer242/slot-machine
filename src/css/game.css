@@ -35,7 +35,7 @@
   background-size: contain;
   background-position: center bottom;
   background-repeat: no-repeat;
-  background-image: url(../images/game1/bingo-slot-machine.png);
+  background-image: url(../images/bingo-slot-machine.png);
 }
 
 .slotMachineLeverBase {
@@ -47,7 +47,7 @@
   background-size: contain;
   background-position: center bottom;
   background-repeat: no-repeat;
-  background-image: url(../images/game1/bingo-slot-lever-base.png);
+  background-image: url(../images/bingo-slot-lever-base.png);
 }
 
 .slotMachineHandle {
@@ -59,7 +59,7 @@
   background-size: contain;
   background-position: center bottom;
   background-repeat: no-repeat;
-  background-image: url(../images/game1/bingo-slot-handle.png);
+  background-image: url(../images/bingo-slot-handle.png);
 }
 
 .slotMachineLeverContainer {
@@ -83,7 +83,7 @@
   background-size: contain;
   background-position: center bottom;
   background-repeat: no-repeat;
-  background-image: url(../images/game1/bingo-slot-lever.png);
+  background-image: url(../images/bingo-slot-lever.png);
 }
 
 .leverRotate {
@@ -121,7 +121,7 @@
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
-  background-image: url(../images/game1/bingo-slot-overlay.svg);
+  background-image: url(../images/bingo-slot-overlay.svg);
 }
 
 .slotMachineSlotsContainer {
@@ -144,13 +144,13 @@
 }
 
 .slots1 {
-  background-image: url(../images/game1/bingo-slots.png);
+  background-image: url(../images/bingo-slots.png);
 }
 .slots2 {
-  background-image: url(../images/game1/bingo-slots2.png);
+  background-image: url(../images/bingo-slots2.png);
 }
 .slots3 {
-  background-image: url(../images/game1/bingo-slots3.png);
+  background-image: url(../images/bingo-slots3.png);
 }
 
 .slotsWaitingMotion {
@@ -198,31 +198,31 @@
 }
 
 .winSlots0 {
-  background-image: url(../images/game1/bingo-slot1.png);
+  background-image: url(../images/bingo-slot1.png);
 }
 
 .winSlots1 {
-  background-image: url(../images/game1/bingo-slot2.png);
+  background-image: url(../images/bingo-slot2.png);
 }
 
 .winSlots2 {
-  background-image: url(../images/game1/bingo-slot3.png);
+  background-image: url(../images/bingo-slot3.png);
 }
 
 .winSlots3 {
-  background-image: url(../images/game1/bingo-slot4.png);
+  background-image: url(../images/bingo-slot4.png);
 }
 
 .winSlots4 {
-  background-image: url(../images/game1/bingo-slot5.png);
+  background-image: url(../images/bingo-slot5.png);
 }
 
 .winSlots5 {
-  background-image: url(../images/game1/bingo-slot6.png);
+  background-image: url(../images/bingo-slot6.png);
 }
 
 .winSlots6 {
-  background-image: url(../images/game1/bingo-slot7.png);
+  background-image: url(../images/bingo-slot7.png);
 }
 
 .winTitle {
@@ -256,10 +256,10 @@
   background-repeat: no-repeat;
 }
 .winTitleItem.left {
-  background-image: url(../images/game1/bingo-win-item-left.svg);
+  background-image: url(../images/bingo-win-item-left.svg);
 }
 .winTitleItem.right {
-  background-image: url(../images/game1/bingo-win-item-right.svg);
+  background-image: url(../images/bingo-win-item-right.svg);
 }
 
 .mobile .winTitleItem {
@@ -282,4 +282,23 @@
   top: 0px;
   width: 100%;
   height: 80px;
+}
+
+.slotMachineLights {
+  position: absolute;
+  top: 60px;
+  left: 67px;
+  width: 295px;
+  height: 233px;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  mix-blend-mode: plus-lighter;
+}
+
+.slotMachineLights.odd {
+  background-image: url(../images/bingo-lights-phase1.svg);
+}
+.slotMachineLights.even {
+  background-image: url(../images/bingo-lights-phase2.svg);
 }

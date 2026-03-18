@@ -1,5 +1,4 @@
 import React from "react";
-import "../css/game1.css";
 import GamePage from "./GamePage";
 import { setStoreData } from "../actions/appActions";
 
@@ -63,7 +62,7 @@ class Game1Page extends GamePage {
   doAfterStoreChange(state) {
     if (!this.initialized) {
       if (state?.gameCredentials) {
-        if (state?.gameCredentials.win) {
+        if (state?.gameCredentials.prize) {
           this.initialized = true;
           let value = this.getRandomValue();
           state = {
@@ -240,7 +239,14 @@ class Game1Page extends GamePage {
               <div className="slotMachineLever leverRotate"></div>
             </div>
             <div className="slotMachineHandle handleMotion"></div>
-            <div className="slotMachine"></div>
+            <div className="slotMachine">
+              {this.state.showWin && (
+                <>
+                  <div className="slotMachineLights odd lights"></div>
+                  <div className="slotMachineLights even lights"></div>
+                </>
+              )}
+            </div>
             <div className="slotMachineSlotsContainer">
               <div
                 key={this.state.slot > 0 ? "active1" : "waiting1"}
@@ -293,16 +299,13 @@ class Game1Page extends GamePage {
             opacity: this.state.showWin ? 1 : 0,
           }}
         ></div>
-        <div
-          className="winTitle"
-          style={{
-            opacity: this.state.showWin ? 1 : 0,
-          }}
-        >
-          <div className="winTitleItem left"></div>
-          <h1 className="caps">Поздравляем!</h1>
-          <div className="winTitleItem right"></div>
-        </div>
+        {this.state.showWin && (
+          <div className="winTitle appear-zoom">
+            <div className="winTitleItem left appear-zoom delay500ms"></div>
+            <h1 className="caps">Поздравляем!</h1>
+            <div className="winTitleItem right appear-zoom delay500ms"></div>
+          </div>
+        )}
       </div>
     );
   }

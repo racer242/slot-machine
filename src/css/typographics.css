@@ -144,7 +144,27 @@
   line-height: 210px;
 }
 
+.mobile .finishPage .plate h1 {
+  font-size: 128px;
+  line-height: 128px;
+}
+
 .finishPage .plate p {
   font-size: 28px;
-  line-height: 28px;
+  line-height: 34px;
+}
+
+.mobile .finishPage .plate p {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.finishPage .button-group p {
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.mobile .finishPage .button-group p {
+  font-size: 18px;
+  line-height: 22px;
 }

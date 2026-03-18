@@ -34,6 +34,11 @@
   padding-top: 40px;
 }
 
+.finishPage {
+  gap: 0px;
+  padding-top: 0px;
+}
+
 .pageBg-head,
 .pageOverlay,
 .pageBg,
@@ -50,7 +55,7 @@
 
 .pageBg {
   background-color: #8ec046;
-  background-image: url(../images/game1/bingo-bg.svg);
+  background-image: url(../images/bingo-bg.svg);
   background-size: cover;
 }
 
@@ -118,31 +123,31 @@
 }
 
 .g1 .plate {
-  background-image: url(../images/game1/bingo-plate.svg);
+  background-image: url(../images/bingo-plate.svg);
 }
 
 .mobile .g1 .plate {
-  background-image: url(../images/game1/bingo-plate-mob.svg);
+  background-image: url(../images/bingo-plate-mob.svg);
 }
 
 .gamePage.g1 .plate {
   padding-top: 0px;
   width: 617px;
   height: 504px;
-  background-image: url(../images/game1/bingo-plate-game.svg);
+  background-image: url(../images/bingo-plate-game.svg);
 }
 
 .mobile .gamePage.g1 .plate {
   width: 291px;
   height: 353px;
-  background-image: url(../images/game1/bingo-plate-game-mob.svg);
+  background-image: url(../images/bingo-plate-game-mob.svg);
 }
 
 .finishPage.g1 .plate {
   padding-top: 50px;
   width: 547px;
   height: 398px;
-  background-image: url(../images/game1/bingo-finish-plate.svg);
+  background-image: url(../images/bingo-finish-plate.svg);
   margin-bottom: -10px;
   gap: 0px;
   align-items: center;
@@ -151,7 +156,7 @@
 .mobile .finishPage.g1 .plate {
   width: 302px;
   height: 258px;
-  background-image: url(../images/game1/bingo-finish-plate-mob.svg);
+  background-image: url(../images/bingo-finish-plate-mob.svg);
 }
 
 .plate-items {
@@ -167,23 +172,23 @@
 }
 
 .g1 .plate-items {
-  background-image: url(../images/game1/bingo-plate-items.svg);
+  background-image: url(../images/bingo-plate-items.svg);
 }
 
 .mobile .g1 .plate-items {
-  background-image: url(../images/game1/bingo-plate-items-mob.svg);
+  background-image: url(../images/bingo-plate-items-mob.svg);
 }
 
 .gamePage.g1 .plate-items {
   width: 617px;
   height: 504px;
-  background-image: url(../images/game1/bingo-plate-items-game.svg);
+  background-image: url(../images/bingo-plate-items-game.svg);
 }
 
 .mobile .gamePage.g1 .plate-items {
   width: 291px;
   height: 353px;
-  background-image: url(../images/game1/bingo-plate-items-game-mob.svg);
+  background-image: url(../images/bingo-plate-items-game-mob.svg);
 }
 
 h2.plateTitle {
@@ -215,10 +220,10 @@ h2.plateTitle {
 }
 
 .g1 .logo {
-  background-image: url(../images/game1/bingo-img.png);
+  background-image: url(../images/bingo-img.png);
 }
 .mobile .g1 .logo {
-  background-image: url(../images/game1/bingo-img-mob.png);
+  background-image: url(../images/bingo-img-mob.png);
 }
 
 .logo-pulsing {
@@ -257,11 +262,9 @@ h2.plateTitle {
 }
 
 .pageTitle {
-  position: absolute;
   top: 0px;
   left: 105px;
   width: 663px;
-  height: 153px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -288,11 +291,60 @@ h2.plateTitle {
   left: 0px;
   width: 100%;
   height: 135px;
-  background-image: url(../images/game1/bingo-red-stripe.svg);
+  background-image: url(../images/bingo-red-stripe.svg);
   z-index: -1;
+}
+
+.mobile .redStripe {
+  top: 60px;
+  height: 82px;
+}
+
+.mobile .finishPage .plate h1 {
+  margin-top: -30px;
+  margin-bottom: 10px;
 }
 
 .finishPage .plate p {
   padding-left: 50px;
   padding-right: 50px;
+}
+
+.mobile .finishPage .plate p {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.failSmile {
+  position: relative;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  width: 100%;
+  height: 96px;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url(../images/bingo-fail.svg);
+}
+
+.mobile .failSmile {
+  height: 72px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.finishPage .button-group p {
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  margin-top: -10px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  background-image: url(../images/bingo-underline.svg);
+}
+
+.mobile .finishPage .button-group p {
+  height: 43px;
+  margin-top: -15px;
+  margin-bottom: 15px;
 }

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { setStoreData } from "../actions/appActions";
-import md5 from "md5";
 
 class GamePage extends Component {
   constructor(props) {
@@ -68,32 +67,13 @@ class GamePage extends Component {
       setStoreData({
         requestStart: {
           request: this.state.gameData.request1,
-          data: { mode: "start", tentCode: this.state.gameData.id },
+          data: { play: true },
         },
       }),
     );
   }
 
-  registerFinish() {
-    if (this.state.userNotAuthorized) return;
-    let guid = this.state.gameCredentials?.guid;
-    let userCode = this.state.gameCredentials?.userCode;
-    let marks = this.state.score;
-    let hash = md5(userCode + guid + guid + guid + marks);
-    this.store.dispatch(
-      setStoreData({
-        requestFinish: {
-          request: this.state.gameData.request2,
-          data: {
-            mode: "finish",
-            hash,
-            guid,
-            marks,
-          },
-        },
-      }),
-    );
-  }
+  registerFinish() {}
 
   setState(data) {
     data.countdown = this.countdown;

@@ -454,8 +454,8 @@
   animation-delay: 2s !important;
 }
 
-.lights {
-  animation: lights 4000ms ease-out infinite;
+.lights.odd {
+  animation: lights 500ms ease-out infinite;
 }
 @keyframes lights {
   0% {
@@ -475,8 +475,8 @@
   }
 }
 
-.lights-even {
-  animation: lights-even 4000ms ease-out infinite;
+.lights.even {
+  animation: lights-even 500ms ease-out infinite;
 }
 @keyframes lights-even {
   0% {

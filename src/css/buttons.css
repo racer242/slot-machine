@@ -105,9 +105,12 @@
 
 .mobile .button-group {
   width: auto;
-  flex-direction: column;
   flex-direction: column-reverse;
   gap: 10px;
+}
+
+.mobile .button-group.inverted {
+  flex-direction: column;
 }
 
 .g-checkbox {
