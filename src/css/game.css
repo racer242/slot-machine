@@ -1,14 +1,3 @@
-.gamePage {
-  position: absolute;
-  display: block;
-  left: 0%;
-  top: 0%;
-  width: 100%;
-  height: 100%;
-  touch-action: none;
-  user-select: none;
-}
-
 .gameScene {
   position: absolute;
   display: block;
@@ -16,7 +5,6 @@
   top: 0%;
   width: 100%;
   height: 100%;
-  background-color: #fff;
 
   -webkit-touch-callout: none !important;
   touch-action: none !important;
@@ -28,200 +16,270 @@
   caret-color: transparent;
 }
 
-.g1 .gameScene {
-  background-color: #fff;
-}
-
-.countdown {
+.slotMachineContainer {
   position: absolute;
-  pointer-events: none;
-
-  width: 72px;
-  height: 72px;
-  left: 24px;
-  top: 24px;
-  display: block;
-  isolation: isolate;
-  box-sizing: border-box;
+  top: 75px;
+  width: 431px;
+  height: 478px;
 }
 
-.mobile .countdown {
-  transform: scale(1.1);
+.mobile .slotMachineContainer {
+  top: -30px;
+  transform: scale(0.65);
 }
 
-.score {
+.slotMachine {
   position: absolute;
-  pointer-events: none;
-
-  width: 132px;
-  height: 72px;
-  right: 24px;
-  top: 24px;
-
-  background-color: rgba(255, 255, 255, 0.9);
-  background-position: 10px center;
+  width: 431px;
+  height: 478px;
+  background-size: contain;
+  background-position: center bottom;
   background-repeat: no-repeat;
-  border-radius: 36px;
-  display: block;
-  isolation: isolate;
-  box-sizing: border-box;
-  padding-left: 50px;
-  padding-top: 20px;
-  text-align: center;
+  background-image: url(../images/game1/bingo-slot-machine.png);
 }
 
-.mobile .score {
-  transform: scale(1.1);
-}
-
-.bonus-box {
+.slotMachineLeverBase {
   position: absolute;
-  display: block;
-  width: 150px;
-  height: 150px;
-  transition-property: transform, opacity, left, top;
-  pointer-events: none;
-  z-index: 30;
+  width: 18px;
+  height: 48px;
+  top: 210px;
+  left: 393px;
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-image: url(../images/game1/bingo-slot-lever-base.png);
 }
 
-.bonus {
+.slotMachineHandle {
   position: absolute;
-  left: 0px;
-  top: 0px;
-  width: 150px;
-  height: 150px;
+  width: 36px;
+  height: 34px;
+  top: 75px;
+  left: 400px;
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-image: url(../images/game1/bingo-slot-handle.png);
+}
+
+.slotMachineLeverContainer {
+  position: absolute;
+  width: 26px;
+  height: 200px;
+  top: 95px;
+  left: 392px;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  overflow: hidden;
+}
+
+.slotMachineLever {
+  position: absolute;
+  width: 14px;
+  height: 147px;
+  top: -5px;
+  left: -15px;
+  transform-origin: 7px 147px;
+  transform: rotate(13deg);
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-image: url(../images/game1/bingo-slot-lever.png);
+}
+
+.leverRotate {
+  animation: leverRotate 1000ms 2 ease-in-out alternate;
+  animation-delay: 2s;
+}
+@keyframes leverRotate {
+  0% {
+    transform: rotate(13deg);
+  }
+  100% {
+    transform: rotate(147deg) scale(1.3);
+  }
+}
+
+.handleMotion {
+  animation: handleMotion 1000ms 2 alternate cubic-bezier(0.15, 0.15, 0.32, 0.8);
+  animation-delay: 2s;
+}
+@keyframes handleMotion {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(200px) translateX(5px) scale(1.5);
+  }
+}
+
+.slotMachineOverlay {
+  position: absolute;
+  left: 98px;
+  top: 84px;
+  width: 232px;
+  height: 183px;
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
-  pointer-events: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  transform: translate(-50%, -25%);
-  font-family: "BlocWebExtraCondensed";
-  font-style: normal;
-  font-weight: 800;
-  font-size: 32px;
-  line-height: 32px;
+  background-image: url(../images/game1/bingo-slot-overlay.svg);
 }
 
-.g1 .bonus {
-  background-image: url(../images/game1/bonus.svg);
-  color: #fff;
-}
-.g1 .bonus.negative {
-  color: #ff49b8;
-}
-
-.g1 .score {
-  color: #ea49ff;
-}
-
-.g1 .countdown {
-  color: #8755ea;
-}
-
-.g1 .countdown .progress-bar__background {
-  stroke: #8755ea;
-}
-
-.g1 .countdown .progress-bar__progress {
-  stroke: #fff;
-}
-
-.score-decor {
+.slotMachineSlotsContainer {
   position: absolute;
-  animation: pulse 3s ease-in-out infinite;
+  left: 98px;
+  top: 84px;
+  width: 232px;
+  height: 183px;
+  overflow: hidden;
+}
+
+.slotMachineSlots {
+  position: absolute;
+  width: 76px;
+  height: calc(532px * 6);
+  top: calc(-532px * 6 + 183px + 20px);
   background-size: contain;
+  background-position: center top;
+  background-repeat: repeat-y;
+}
+
+.slots1 {
+  background-image: url(../images/game1/bingo-slots.png);
+}
+.slots2 {
+  background-image: url(../images/game1/bingo-slots2.png);
+}
+.slots3 {
+  background-image: url(../images/game1/bingo-slots3.png);
+}
+
+.slotsWaitingMotion {
+  animation: slotsMotion 1s linear infinite;
+  animation-delay: 2500ms;
+}
+
+.slotsMotion {
+  animation: slotsMotion 3250ms ease-out;
+}
+@keyframes slotsMotion {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(532px * 5));
+  }
+}
+
+.slotMachineWinSlot {
+  position: absolute;
+  width: 534px;
+  height: 284px;
+  top: 30px;
+  left: -55px;
+  background-size: contain;
+  background-position: center center;
   background-repeat: no-repeat;
 }
 
-.score-decor.item-1 {
-  left: 28px;
-  top: 13px;
-  width: 8px;
-  height: 8px;
-  background-image: url(../images/score-decor1.svg);
+.winSlotAnimation {
+  animation: winSlotAnimation 500ms ease-out;
+  animation-fill-mode: backwards;
+  will-change: contents;
 }
-.score-decor.item-2 {
-  left: 43px;
-  top: 13px;
-  width: 11px;
-  height: 11px;
-  background-image: url(../images/score-decor2.svg);
-}
-.score-decor.item-3 {
-  left: 56px;
-  top: 49px;
-  width: 8px;
-  height: 9px;
-  background-image: url(../images/score-decor3.svg);
-}
-.score-decor.item-4 {
-  left: 14px;
-  top: 16px;
-  width: 53px;
-  height: 46px;
-  background-image: url(../images/score-decor4.svg);
-  animation: small-pulse 1s ease-in-out infinite;
-}
-.score-decor.item-5 {
-  left: 12px;
-  top: 20px;
-  width: 15px;
-  height: 15px;
-  background-image: url(../images/score-decor5.svg);
-}
-
-/* Индивидуальные настройки для каждого блока */
-.score-decor:nth-child(1) {
-  animation-duration: 2.4s;
-  animation-delay: 0.1s;
-}
-
-.score-decor:nth-child(2) {
-  animation-duration: 3.1s;
-  animation-delay: 0.5s;
-}
-
-.score-decor:nth-child(3) {
-  animation-duration: 2.7s;
-  animation-delay: 0.3s;
-}
-
-.score-decor:nth-child(4) {
-  animation-duration: 3.5s;
-  animation-delay: 0.7s;
-}
-
-.score-decor:nth-child(5) {
-  animation-duration: 2.9s;
-  animation-delay: 0.2s;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: translate(0, 0) rotate(0deg) scale(1);
+@keyframes winSlotAnimation {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
   }
-  25% {
-    transform: translate(-0px, -1px) rotate(-2deg) scale(1.3);
-  }
-  50% {
-    transform: translate(1px, -1px) rotate(3deg) scale(1.2);
-  }
-  75% {
-    transform: translate(-1px, 0px) rotate(-1.5deg) scale(1.1);
-  }
-}
-@keyframes small-pulse {
-  0%,
   100% {
     transform: scale(1);
+    opacity: 1;
   }
-  50% {
-    transform: scale(1.15);
-  }
+}
+
+.winSlots0 {
+  background-image: url(../images/game1/bingo-slot1.png);
+}
+
+.winSlots1 {
+  background-image: url(../images/game1/bingo-slot2.png);
+}
+
+.winSlots2 {
+  background-image: url(../images/game1/bingo-slot3.png);
+}
+
+.winSlots3 {
+  background-image: url(../images/game1/bingo-slot4.png);
+}
+
+.winSlots4 {
+  background-image: url(../images/game1/bingo-slot5.png);
+}
+
+.winSlots5 {
+  background-image: url(../images/game1/bingo-slot6.png);
+}
+
+.winSlots6 {
+  background-image: url(../images/game1/bingo-slot7.png);
+}
+
+.winTitle {
+  position: absolute;
+  top: 0px;
+  left: 105px;
+  width: 663px;
+  height: 153px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: end;
+  gap: 20px;
+  transition: opacity 1000ms;
+}
+
+.mobile .winTitle {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100px;
+  gap: 0px;
+}
+
+.winTitleItem {
+  width: 106px;
+  height: 101px;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.winTitleItem.left {
+  background-image: url(../images/game1/bingo-win-item-left.svg);
+}
+.winTitleItem.right {
+  background-image: url(../images/game1/bingo-win-item-right.svg);
+}
+
+.mobile .winTitleItem {
+  width: 48px;
+  height: 45px;
+}
+
+.winTitleOverlay {
+  position: absolute;
+  left: 245px;
+  top: 25px;
+  width: 400px;
+  height: 80px;
+  background: #8ec046;
+  transition: opacity 500ms;
+}
+
+.mobile .winTitleOverlay {
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 80px;
 }

@@ -47,9 +47,14 @@ class GamePage extends Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {}
 
+  doAfterStoreChange(state) {
+    return state;
+  }
+
   onStoreChange() {
     if (this.mounted) {
       let state = this.store.getState();
+      state = this.doAfterStoreChange(state);
       this.setState({
         ...this.state,
         ...state,
@@ -65,7 +70,7 @@ class GamePage extends Component {
           request: this.state.gameData.request1,
           data: { mode: "start", tentCode: this.state.gameData.id },
         },
-      })
+      }),
     );
   }
 
@@ -86,7 +91,7 @@ class GamePage extends Component {
             marks,
           },
         },
-      })
+      }),
     );
   }
 
@@ -101,12 +106,16 @@ class GamePage extends Component {
 
       this.started = true;
       this.countdown = 0;
-      this.setState({
-        ...this.state,
-        finished: false,
-      });
-      this.stepGame();
-      this.controlGame();
+      // this.setState({
+      //   ...this.state,
+      //   finished: false,
+      // });
+      this.gameTimer = setTimeout(
+        this.stepGame.bind(this),
+        this.state.stepDuration,
+      );
+      this.countdownTimer = setTimeout(this.controlGame.bind(this), 1000);
+      // this.controlGame();
       this.doStart();
     }
   }
@@ -124,7 +133,7 @@ class GamePage extends Component {
       // if (this.initCount > 1) {
       this.gameTimer = setTimeout(
         this.stepGame.bind(this),
-        this.state.stepDuration
+        this.state.stepDuration,
       );
       // } else {
       //   this.initCount++;
@@ -148,18 +157,22 @@ class GamePage extends Component {
     });
   }
 
+  doAfterFinish() {
+    this.store.dispatch(
+      setStoreData({
+        currentPage: "finish",
+        gameScore: this.state.score,
+      }),
+    );
+  }
+
   finishGame() {
     if (this.stopTimer != null) clearTimeout(this.stopTimer);
     this.stopTimer = setTimeout(() => {
       this.registerFinish();
       if (this.stopTimer != null) clearTimeout(this.stopTimer);
       this.stopTimer = setTimeout(() => {
-        this.store.dispatch(
-          setStoreData({
-            currentPage: "finish",
-            gameScore: this.state.score,
-          })
-        );
+        this.doAfterFinish();
       }, this.state.stopDuration / 2);
     }, this.state.stopDuration / 2);
   }

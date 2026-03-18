@@ -22,7 +22,7 @@ import "./css/components.css";
 import "./css/content.css";
 import "./css/game.css";
 import "./css/animation.scss";
-import "./css/bonus-particles.scss";
+import "./css/gifting.scss";
 import "./css/circularProgress.scss";
 
 import Game1Settings from "./configuration/Game1Settings";

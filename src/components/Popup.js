@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { ReactComponent as X } from "../images/x.svg";
 
 class Popup extends Component {
   constructor(props) {
@@ -30,7 +29,7 @@ class Popup extends Component {
           <div id="PopupContent" key="PopupContent">
             {children}
           </div>
-          <X
+          <div
             width={60}
             className="close-button popup-close"
             onClick={this.closeButton_clickHandler}

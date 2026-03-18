@@ -1,304 +1,308 @@
 import React from "react";
 import "../css/game1.css";
-import "../css/snow.scss";
 import GamePage from "./GamePage";
-import CircularProgress from "../components/CircularProgress";
+import { setStoreData } from "../actions/appActions";
 
 class Game1Page extends GamePage {
   constructor(props) {
     super(props);
 
+    let offsets = this.getRandomOffsets();
+
     this.state = {
       ...this.state,
       objects: [],
-      bonuses: [],
       gameDuration: this.state.game1.gameDuration,
       stopDuration: this.state.game1.stopDuration,
       stepDuration: this.state.game1.stepDuration,
+      ...offsets,
+      offsets: null,
+      win: false,
+      showWin: false,
+      winSlot: -1,
+      slot: 0,
+      step: "init",
+      count: 0,
     };
 
-    this.initCount = 0;
+    this.sequence1 = [0, 1, 2, 3, 4, 5, 6];
+    this.sequence2 = [5, 4, 1, 0, 3, 6, 2];
+    this.sequence3 = [2, 5, 3, 6, 4, 1, 0];
 
-    this.objButton_clickHandler = this.objButton_clickHandler.bind(this);
+    this.initialized = false;
   }
 
-  doStart() {
-    let objects = this.state.objects;
-    let objSources = this.state.game1.objSources;
-    for (let i = 0; i < this.state.game1.startObjCount; i++) {
-      let x = Math.floor(Math.random() * this.state.game1.gridSize);
-      let y = Math.floor(Math.random() * this.state.game1.gridSize);
-      let objSource = objSources[Math.floor(Math.random() * objSources.length)];
-      objects.push({
-        id: "obj" + this.counter++,
-        x,
-        y,
-        baseX: x,
-        baseY: y,
-        ...this.updateObjBounds({ x, y }),
-        type: objSource,
-        status: "obj-show",
-        life:
-          objSource.lifeCount * Math.random() -
-          Math.random() * objSource.lifeProb,
-      });
+  getRandomOffset() {
+    return -76 * Math.floor(Math.random() * 7) - 2 * 76;
+  }
+
+  getRandomValue() {
+    return Math.floor(Math.random() * 7);
+  }
+
+  getRelativeOffset(offset, sequence) {
+    return -76 * sequence[offset] - 2 * 76;
+  }
+
+  getRandomOffsets() {
+    let offsets;
+    do {
+      offsets = {
+        offset1: this.getRandomOffset(),
+        offset2: this.getRandomOffset(),
+        offset3: this.getRandomOffset(),
+      };
+    } while (
+      offsets.offset1 === offsets.offset2 &&
+      offsets.offset1 === offsets.offset3 &&
+      offsets.offset2 === offsets.offset3
+    );
+    return offsets;
+  }
+
+  doAfterStoreChange(state) {
+    if (!this.initialized) {
+      if (state?.gameCredentials) {
+        if (state?.gameCredentials.win) {
+          this.initialized = true;
+          let value = this.getRandomValue();
+          state = {
+            ...state,
+            offsets: {
+              offset1: this.getRelativeOffset(value, this.sequence1),
+              offset2: this.getRelativeOffset(value, this.sequence2),
+              offset3: this.getRelativeOffset(value, this.sequence3),
+            },
+            win: true,
+            winSlot: value,
+          };
+        } else {
+          state = {
+            ...state,
+            offsets: this.getRandomOffsets(),
+          };
+        }
+        state = {
+          ...state,
+          step: "start",
+        };
+      }
     }
-    this.setState({
-      ...this.state,
-      objects,
-    });
+    return state;
   }
 
-  updateObjBounds(obj) {
-    obj.cssX =
-      "calc(" +
-      obj.x * (100 / this.state.game1.gridSize) +
-      "% + " +
-      50 / this.state.game1.gridSize +
-      "% - " +
-      this.state.game1.objectBounds.width / 2 +
-      "px)";
-    obj.cssY =
-      "calc(" +
-      obj.y * (100 / this.state.game1.gridSize) +
-      "% + " +
-      50 / this.state.game1.gridSize +
-      "% - " +
-      this.state.game1.objectBounds.height / 2 +
-      "px)";
-    return obj;
-  }
+  doStart() {}
 
   doGame() {
-    let objects = this.state.objects;
-    let objSources = this.state.game1.objSources;
-    let bonuses = this.state.bonuses;
-    let scoreAdded = this.state.scoreAdded;
+    let state = this.state;
+    let step = this.state.step;
+    let count = this.state.count;
 
-    bonuses = bonuses.filter((v) => v.status != "bonus-destroy");
-    for (const bonus of bonuses) {
-      if (bonus.status == "bonus-show") {
-        bonus.life--;
-        if (bonus.life < 0) {
-          bonus.status = "bonus-destroy";
+    if (step === "init") {
+      count++;
+      if (count > 8) {
+        step = this.state.offsets ? "start" : "wait";
+        count = 0;
+      }
+    } else if (step === "start") {
+      count++;
+      if (count > 6) {
+        step = "finish1";
+        count = 0;
+        state = {
+          ...state,
+          slot: 1,
+          offset1: this.state.offsets.offset1,
+        };
+      }
+    } else if (step === "finish1") {
+      count++;
+      if (count > 2) {
+        step = "finish2";
+        count = 0;
+        state = {
+          ...state,
+          slot: 2,
+          offset2: this.state.offsets.offset2,
+        };
+      }
+    } else if (step === "finish2") {
+      count++;
+      if (count > 2) {
+        step = "finish3";
+        count = 0;
+        state = {
+          ...state,
+          slot: 3,
+          offset3: this.state.offsets.offset3,
+        };
+      }
+    } else if (step === "finish3") {
+      count++;
+      if (count > 8) {
+        if (state.win) {
+          step = "showWin";
+          count = 0;
+          state = {
+            ...state,
+            showWin: true,
+          };
+        } else {
+          step = "showFail";
         }
       }
-      if (bonus.status == "bonus-on") {
-        scoreAdded = false;
-        bonus.status = "bonus-show";
-        bonus.life = this.state.game2.bonusLife;
+    } else if (step === "showWin") {
+      count++;
+      if (count > 10) {
+        step = "gameOver";
+        count = 0;
+        state = {
+          ...state,
+          finished: true,
+        };
+        this.stopGame();
+        this.finishGame();
       }
-    }
-
-    objects = objects.filter((v) => v.status != "obj-destroy");
-    for (const obj of objects) {
-      if (obj.status == "obj-off") {
-        obj.status = "obj-destroy";
+    } else if (step === "showFail") {
+      count++;
+      if (count > 4) {
+        step = "gameOver";
+        count = 0;
+        state = {
+          ...state,
+          finished: true,
+        };
+        this.stopGame();
+        this.finishGame();
       }
-
-      if (obj.status == "obj-kill-1") {
-        obj.status = "obj-destroy";
-      }
-      if (obj.status == "obj-kill") {
-        obj.status = "obj-kill-1";
-      }
-
-      if (obj.status == "obj-show") {
-        obj.life++;
-        obj.x = obj.baseX + Math.sign(Math.random() * 1 - 0.5) * obj.type.speed;
-        obj.y = obj.baseY + Math.sign(Math.random() * 1 - 0.5) * obj.type.speed;
-
-        this.updateObjBounds(obj);
-        if (obj.life > obj.type.lifeCount) {
-          obj.status = "obj-off";
-        }
-      }
-
-      if (obj.status == "obj-on") {
-        obj.status = "obj-show";
-      }
-    }
-    for (let i = 0; i < this.state.game1.newCount; i++) {
-      let x = Math.floor(Math.random() * this.state.game1.gridSize);
-      let y = Math.floor(Math.random() * this.state.game1.gridSize);
-
-      let found = objects.filter((v) => v.baseX == x && v.baseY == y);
-      if (found.length > 0) continue;
-
-      let objSource = objSources[Math.floor(Math.random() * objSources.length)];
-
-      objects.push({
-        id: "obj" + this.counter++,
-        x,
-        y,
-        baseX: x,
-        baseY: y,
-        ...this.updateObjBounds({ x, y }),
-        type: objSource,
-        status: "obj-on",
-        life: -Math.random() * objSource.lifeProb,
-      });
     }
 
     this.setState({
-      ...this.state,
-      objects,
-      bonuses,
-      scoreAdded,
+      ...state,
+      step,
+      count,
     });
 
     return true;
   }
 
-  objButton_clickHandler(event) {
-    let objects = this.state.objects;
-    let bonuses = this.state.bonuses;
-    let bonusValue = 0;
-    let objs = objects.filter((v) => v.id == event.target.id);
-    if (objs.length > 0) {
-      let obj = objs[0];
+  doControl() {
+    return true;
+  }
 
-      bonusValue = obj.type.bonus;
-      bonuses.push({
-        id: "bonus" + this.counter++,
-        cssX: event.target.offsetLeft + this.state.game1.objectBounds.width,
-        cssY: event.target.offsetTop + this.state.game1.objectBounds.height / 4,
-        value: bonusValue,
-        status: "bonus-on",
-      });
-
-      obj.status = "obj-kill";
-      event.target.classList.add("g1-obj-kill");
+  doAfterFinish() {
+    if (this.state.win) {
+      this.store.dispatch(
+        setStoreData({
+          currentPage: "win",
+          gameScore: 1,
+        }),
+      );
+    } else {
+      this.store.dispatch(
+        setStoreData({
+          currentPage: "fail",
+          gameScore: 0,
+        }),
+      );
     }
-    let score = Math.max(this.state.score + bonusValue, 0);
-
-    this.setState({
-      ...this.state,
-      objects,
-      bonuses,
-      score,
-      scoreAdded: bonusValue > 0,
-    });
   }
 
   render() {
-    let objs = [];
-    for (let i = 0; i < this.state.objects.length; i++) {
-      let obj = this.state.objects[i];
-      objs.push(
-        <div
-          className={
-            "g1-gameObjectBox " +
-            "g1-" +
-            obj.status +
-            (this.state.finished ? " g1-obj-stop" : "")
-          }
-          id={obj.id}
-          key={obj.id}
-          style={{
-            left: obj.cssX,
-            top: obj.cssY,
-            width: this.state.game1.objectBounds.width,
-            height: this.state.game1.objectBounds.height,
-            transitionDuration:
-              obj.status === "obj-show"
-                ? this.state.game1.transitionDuration + "ms"
-                : "",
-            transitionDelay:
-              obj.status === "obj-show"
-                ? Math.random() * this.state.game1.transitionDuration + "ms"
-                : "0ms",
-          }}
-          onClick={this.objButton_clickHandler}
-        >
-          <div
-            className={
-              "g1-gameObject swing" + (obj.type.bonus > 0 ? "" : " bad")
-            }
-            style={{
-              backgroundImage: `url(${obj.type.src})`,
-              pointerEvents: "none",
-            }}
-          ></div>
-        </div>
-      );
-    }
+    // console.log(this.state.step, this.state);
 
-    let bonuses = [];
-    for (let i = 0; i < this.state.bonuses.length; i++) {
-      let bonus = this.state.bonuses[i];
-      let particles = [];
-      if (bonus.value > 0) {
-        for (let j = 0; j < this.state.particlesCount; j++) {
-          particles.push(<div key={"p" + j} className="bonus-particle"></div>);
-        }
+    let giftParticles = [];
+    if (this.state.showWin) {
+      for (let i = 0; i < this.state.game1.giftParticlesCount; i++) {
+        giftParticles.push(<div key={"p" + i} className="g1-gift"></div>);
       }
-      bonuses.push(
-        <div key={bonus.id}>
-          <div
-            className="bonus-particle-container"
-            style={{
-              left: bonus.cssX,
-              top: bonus.cssY,
-            }}
-          >
-            {particles}
-          </div>
-          <div
-            className="bonus-box bonusUp display"
-            id={bonus.id}
-            style={{
-              left: bonus.cssX,
-              top: bonus.cssY,
-            }}
-          >
-            <div className={"bonus g1" + (bonus.value > 0 ? "" : " negative")}>
-              {bonus.value > 0 ? "+" + bonus.value : bonus.value}
-            </div>
-          </div>
-        </div>
-      );
     }
-
-    let time = this.state.game1.gameDuration - this.state.countdown;
 
     return (
       <div className="gamePage g1">
-        <div className="gameScene">
-          <div className="pageBg slow-pulsing"></div>
-          <div className="screen-snow">
-            {Array.from({ length: 30 }, (_, index) => (
-              <div key={index} className="snowflake" />
-            ))}
+        <div className="plate appear-bottom">
+          <h2
+            className="plateTitle"
+            style={{
+              opacity: this.state.showWin ? 0 : 1,
+              transition: "opacity 1s",
+            }}
+          >
+            Если выпадет три одинаковых карточки, твои шансы в розыгрыше
+            главного приза удваиваются.
+          </h2>
+          <div className="animations-container delay2s floating">
+            <div className="plate-items appear-zoom delay300ms"></div>
           </div>
-          {objs}
-          {bonuses}
+          <div className="slotMachineContainer">
+            <div className="slotMachineLeverBase"></div>
+            <div className="slotMachineLeverContainer">
+              <div className="slotMachineLever leverRotate"></div>
+            </div>
+            <div className="slotMachineHandle handleMotion"></div>
+            <div className="slotMachine"></div>
+            <div className="slotMachineSlotsContainer">
+              <div
+                key={this.state.slot > 0 ? "active1" : "waiting1"}
+                className={
+                  "slotMachineSlots slots1 " +
+                  (this.state.slot > 0 ? "slotsMotion" : "slotsWaitingMotion")
+                }
+                style={{ left: 0, backgroundPositionY: this.state.offset1 }}
+              ></div>
+              <div
+                key={this.state.slot > 1 ? "active2" : "waiting2"}
+                className={
+                  "slotMachineSlots slots2 " +
+                  (this.state.slot > 1 ? "slotsMotion" : "slotsWaitingMotion")
+                }
+                style={{ left: 79, backgroundPositionY: this.state.offset2 }}
+              ></div>
+              <div
+                key={this.state.slot > 2 ? "active3" : "waiting3"}
+                className={
+                  "slotMachineSlots slots3 " +
+                  (this.state.slot > 2 ? "slotsMotion" : "slotsWaitingMotion")
+                }
+                style={{
+                  left: 79 * 2,
+                  backgroundPositionY: this.state.offset3,
+                }}
+              ></div>
+            </div>
+            <div className="slotMachineOverlay"></div>
+
+            {this.state.showWin && (
+              <div className="g1-gifting-container">{giftParticles}</div>
+            )}
+
+            {this.state.showWin && (
+              <div
+                className={
+                  "slotMachineWinSlot winSlotAnimation delay300ms winSlots" +
+                  this.state.winSlot
+                }
+              ></div>
+            )}
+          </div>
         </div>
-        <div className={"countdown display " + (time < 10 ? " warning" : "")}>
-          <CircularProgress value={1 - time / this.state.game1.gameDuration}>
-            {time}
-          </CircularProgress>
-        </div>
+
         <div
-          className={
-            "score display" + (this.state.scoreAdded ? " impulse" : "")
-          }
-        >
-          <div className="score-decor item-1"></div>
-          <div className="score-decor item-2"></div>
-          <div className="score-decor item-3"></div>
-          <div className="score-decor item-4"></div>
-          <div className="score-decor item-5"></div>
-          {this.state.score}
-        </div>
-        <div
-          className="pageOverlay"
+          className="winTitleOverlay"
           style={{
-            visibility: this.state.finished ? "visible" : "hidden",
-            opacity: this.state.finished ? 1 : 0,
-            transitionDuration: this.state.game1.stopDuration + "ms",
+            opacity: this.state.showWin ? 1 : 0,
           }}
         ></div>
+        <div
+          className="winTitle"
+          style={{
+            opacity: this.state.showWin ? 1 : 0,
+          }}
+        >
+          <div className="winTitleItem left"></div>
+          <h1 className="caps">Поздравляем!</h1>
+          <div className="winTitleItem right"></div>
+        </div>
       </div>
     );
   }

@@ -241,7 +241,7 @@
     transform: scale(1);
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(1.05);
   }
   100% {
     transform: scale(1);
@@ -313,7 +313,7 @@
 }
 
 .appear-zoom {
-  animation: appear-zoom 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s;
+  animation: appear-zoom 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   animation-fill-mode: backwards;
   will-change: contents;
 }
@@ -326,6 +326,25 @@
   0% {
     opacity: 0;
     transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.appear-zoom-out {
+  animation: appear-zoom-out 800ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation-fill-mode: backwards;
+  will-change: contents;
+}
+@keyframes appear-zoom-out {
+  0% {
+    opacity: 0;
+    transform: scale(2);
+  }
+  30% {
+    opacity: 1;
   }
   100% {
     opacity: 1;
@@ -352,7 +371,8 @@
 
 .appear-bottom {
   animation: appear-bottom 1000ms cubic-bezier(0.075, 0.82, 0.165, 1);
-  animation-fill-mode: backwards;
+  animation-fill-mode: forwards;
+  opacity: 0;
   will-change: contents;
 }
 @keyframes appear-bottom {
@@ -386,6 +406,25 @@
   }
 }
 
+.appear-expand {
+  animation: appear-expand 1000ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  animation-fill-mode: backwards;
+  will-change: contents;
+}
+@keyframes appear-expand {
+  0% {
+    transform: scaleX(0.2);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0px);
+    opacity: 1;
+  }
+}
+
 .infinite {
   animation-iteration-count: infinite !important;
 }
@@ -413,22 +452,6 @@
 }
 .delay3s {
   animation-delay: 2s !important;
-}
-
-.dancing {
-  animation: dancing 1000ms ease-out infinite;
-  transform-origin: 0% 100%;
-}
-@keyframes dancing {
-  0% {
-    transform: scaleY(1);
-  }
-  50% {
-    transform: scaleY(0.93);
-  }
-  100% {
-    transform: scaleY(1);
-  }
 }
 
 .lights {
@@ -470,190 +493,6 @@
   }
   100% {
     opacity: 0;
-  }
-}
-
-@keyframes blob-scale {
-  0% {
-    transform: scaleX(0.8) scaleY(1) rotate(0deg);
-  }
-  25% {
-    transform: scaleX(0.8) scaleY(0.8) rotate(90deg);
-  }
-  50% {
-    transform: scaleX(1) scaleY(0.8) rotate(180deg);
-  }
-  75% {
-    transform: scaleX(0.8) scaleY(0.8) rotate(270deg);
-  }
-  100% {
-    transform: scaleX(0.8) scaleY(1) rotate(360deg);
-  }
-}
-
-@keyframes blob-skew {
-  0% {
-    transform: skewY(0deg);
-  }
-  13% {
-    transform: skewY(calc((1.8deg) * var(--amount, 2)));
-  }
-  18% {
-    transform: skewY(calc((2.2deg) * var(--amount, 2)));
-  }
-  24% {
-    transform: skewY(calc((2.48deg) * var(--amount, 2)));
-  }
-  25% {
-    transform: skewY(calc((2.5deg) * var(--amount, 2)));
-  }
-  26% {
-    transform: skewY(calc((2.48deg) * var(--amount, 2)));
-  }
-
-  32% {
-    transform: skewY(calc((2.2deg) * var(--amount, 2)));
-  }
-  37% {
-    transform: skewY(calc((1.8deg) * var(--amount, 2)));
-  }
-  50% {
-    transform: skewY(0deg);
-  }
-  63% {
-    transform: skewY(calc((-1.8deg) * var(--amount, 2)));
-  }
-  68% {
-    transform: skewY(calc((-2.2deg) * var(--amount, 2)));
-  }
-  74% {
-    transform: skewY(calc((-2.48deg) * var(--amount, 2)));
-  }
-  75% {
-    transform: skewY(calc((-2.5deg) * var(--amount, 2)));
-  }
-  76% {
-    transform: skewY(calc((-2.48deg) * var(--amount, 2)));
-  }
-  82% {
-    transform: skewY(calc((-2.2deg) * var(--amount, 2)));
-  }
-  87% {
-    transform: skewY(calc((-1.8deg) * var(--amount, 2)));
-  }
-  100% {
-    transform: skewY(0deg);
-  }
-}
-
-.music-box {
-  animation: music-box 2000ms ease-out infinite;
-}
-@keyframes music-box {
-  0% {
-    transform: scale(1);
-  }
-  10% {
-    transform: scale(1.03);
-  }
-  20% {
-    transform: scale(1);
-  }
-  30% {
-    transform: scale(1.03);
-  }
-  40% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.03);
-  }
-  60% {
-    transform: scale(1);
-  }
-  70% {
-    transform: scale(1.03);
-  }
-  75% {
-    transform: scale(1);
-  }
-  80% {
-    transform: scale(1.03);
-  }
-  85% {
-    transform: scale(1);
-  }
-  90% {
-    transform: scale(1.03);
-  }
-  95% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.handling {
-  animation: handling 2000ms ease-out infinite;
-}
-@keyframes handling {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-.button-switching {
-  animation: button-switching 1500ms ease-out infinite;
-}
-@keyframes button-switching {
-  0% {
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 1;
-  }
-  60% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-.ajusting {
-  animation: ajusting 10000ms ease-in-out infinite;
-}
-@keyframes ajusting {
-  0% {
-    transform: translateY(0px);
-  }
-  25% {
-    transform: translateY(100px);
-  }
-  30% {
-    transform: translateY(50px);
-  }
-  50% {
-    transform: translateY(300px);
-  }
-  60% {
-    transform: translateY(200px);
-  }
-  80% {
-    transform: translateY(380px);
-  }
-  100% {
-    transform: translateY(0px);
   }
 }
 

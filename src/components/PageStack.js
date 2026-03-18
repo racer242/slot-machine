@@ -4,6 +4,7 @@ import ScoresPage from "../content/ScoresPage";
 import Game1Page from "../content/Game1Page";
 import Main1Page from "../content/Main1Page";
 import Finish1Page from "../content/Finish1Page";
+import WinPage from "../content/WinPage";
 
 class PageStack extends Component {
   constructor(props) {
@@ -46,9 +47,12 @@ class PageStack extends Component {
     return (
       <div className="pageContainer">
         <div className="pageBg slow-pulsing"></div>
-        <div className="head start appear-zoom">
-          <h1 className="caps">Ипотечное бинго</h1>
-        </div>
+        {(this.state.currentPage === "main" ||
+          this.state.currentPage === "game") && (
+          <div className="head start appear-zoom">
+            <h1 className="caps">Ипотечное бинго</h1>
+          </div>
+        )}
         {this.state.currentPage === "main" &&
           ((this.state.gameIndex == 1 && (
             <Main1Page bounds={this.props.bounds} store={this.store} />
@@ -57,12 +61,11 @@ class PageStack extends Component {
         {this.state.currentPage === "game" && this.state.gameIndex == 1 && (
           <Game1Page bounds={this.props.bounds} store={this.store} />
         )}
-        {this.state.currentPage === "finish" && (
-          <Finish1Page bounds={this.props.bounds} store={this.store} />
+        {this.state.currentPage === "win" && (
+          <WinPage bounds={this.props.bounds} store={this.store} />
         )}
-
-        {this.state.currentPage === "scores" && (
-          <ScoresPage bounds={this.props.bounds} store={this.store} />
+        {this.state.currentPage === "fail" && (
+          <Finish1Page bounds={this.props.bounds} store={this.store} />
         )}
       </div>
     );

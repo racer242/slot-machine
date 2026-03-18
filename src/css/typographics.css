@@ -14,20 +14,33 @@
   line-height: 24px;
 }
 
+.pageTitle h1,
+.winTitle h1 {
+  font-size: 72px;
+  line-height: 72px;
+}
+
+.mobile .pageTitle h1,
+.mobile .winTitle h1 {
+  font-size: 36px;
+  line-height: 36px;
+}
+
 .game h2 {
   font-family: "BlocWebExtraCondensed";
   font-style: normal;
   font-weight: 600;
-  font-size: 28px;
-  line-height: 32px;
+  font-size: 20px;
+  line-height: 24px;
   text-align: center;
   padding: 0;
   margin: 0;
+  color: #5d279e;
 }
 
 .game .mobile h2 {
-  font-size: 24px;
-  line-height: 32px;
+  font-size: 18px;
+  line-height: 22px;
 }
 
 .game .scores-info-plate h2 {
@@ -108,38 +121,6 @@
   line-height: 18px;
 }
 
-.game .display {
-  font-family: "BlocWebExtraCondensed";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 28px;
-  line-height: 34px;
-}
-
-.game .score-value {
-  font-family: "BlocWebExtraCondensed";
-  font-style: normal;
-  font-weight: 800;
-  font-size: 48px;
-  line-height: 48px;
-}
-
-.game .score-title {
-  font-family: "BlocWebExtraCondensed";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 20px;
-}
-
-.game .table {
-  font-family: "BlocWebExtraCondensed";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 18px;
-}
-
 .game .bold {
   font-weight: 800 !important;
 }
@@ -157,68 +138,13 @@
   line-height: 18px;
 }
 
-.g4-select-title {
-  position: absolute;
-  font-family: "BlocWebExtraCondensed";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 135%;
-  text-align: center;
-  color: #ffffff;
+.finishPage .plate h1 {
+  color: #ffce00;
+  font-size: 210px;
+  line-height: 210px;
 }
 
-.mobile .g4-select-title {
-  font-size: 24px;
-}
-
-.g4-select-subtitle {
-  font-family: "BlocWebExtraCondensed";
-  font-style: normal;
-  font-weight: 800;
-  font-size: 18px;
-  line-height: 135%;
-  text-align: center;
-  color: #6c1100;
-}
-
-.mobile .g4-select-subtitle {
-  font-size: 24px;
-}
-
-.g4-select-hint {
-  font-family: "BlocWebExtraCondensed";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 135%;
-  text-align: center;
-  color: #ffffff;
-}
-
-.mobile .g4-select-hint {
-  font-size: 18px;
-}
-
-.g3-hint {
-  font-family: "BlocWebExtraCondensed";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 18px;
-  text-align: center;
-}
-
-.mobile .g3-hint {
-  font-size: 20px;
+.finishPage .plate p {
+  font-size: 28px;
   line-height: 28px;
-}
-
-.g-checkbox p {
-  font-family: "BlocWebExtraCondensed";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 145%;
-  color: #5d279e;
 }
