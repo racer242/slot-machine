@@ -52,11 +52,11 @@
   background: transparent;
 }
 
-.secondary-button:hove,
+.secondary-button:hover,
 .secondary-button:active {
   color: #5d279e;
   border-color: #ffffff;
-  background: ffffff;
+  background: #ffffff;
 }
 .secondary-button:active {
   background: #fff;
