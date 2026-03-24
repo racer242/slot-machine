@@ -24,6 +24,22 @@
     <div id="game" class="game" oninit="onAppReadyHandler">
     </div>
   </div>
+  <button onclick="window.deactivateGameApp();">XXX</button>
+  <button onclick="window.activateGameApp();">AAA</button>
+  <!-- Скрипт для отладки: автозапуск приложения после загрузки -->
+  <!-- Для интеграции в другие проекты этот скрипт можно удалить -->
+  <script>
+    // Автозапуск для отладки
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('DataMatrix Scanner: DOMContentLoaded, вызываем activate()');
+      // Небольшая задержка для уверенности, что main.jsx загрузился
+      setTimeout(() => {
+        if (window.activateGameApp) {
+          window.activateGameApp();
+        }
+      }, 100);
+    });
+  </script>
   <!--
       <div id="game"></div>
       This HTML file is a template.

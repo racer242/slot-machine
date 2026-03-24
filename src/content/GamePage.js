@@ -42,6 +42,7 @@ class GamePage extends Component {
       this.unsubscribe();
     }
     this.mounted = false;
+    this.stopGame();
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {}

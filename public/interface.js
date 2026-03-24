@@ -47,6 +47,28 @@ window.playWithoutConfirmation = function () {
   console.log("playWithoutConfirmation");
 };
 
+/**
+ * Возвращает корневой элемент для рендеринга приложения
+ */
+window.getAppRoot = function () {
+  return document.getElementById("game");
+};
+
+/**
+ * Функция активизации приложения (создается при инициализации приложения)
+ */
+window.activateGameApp = null;
+
+/**
+ * Функция деактивизации приложения (создается при инициализации приложения)
+ */
+window.deactivateGameApp = null;
+
+/**
+ * Функция рестарта приложения (создается при инициализации приложения)
+ */
+window.restartGameApp = null;
+
 // Функция инициализации приложения. Вызывается из обработчика в Index.html,
 // см. <div id="root" class="game" oninit="onAppReadyHandler">
 function onAppReadyHandler(app) {
