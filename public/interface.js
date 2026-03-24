@@ -47,6 +47,18 @@ window.playWithoutConfirmation = function () {
   console.log("playWithoutConfirmation");
 };
 
+// Также функция для использования внутри этого файла, заглушка
+// Имитирует запуск игры
+window.onGameStart = function () {
+  console.log("onGameStart");
+};
+
+// Также функция для использования внутри этого файла, заглушка
+// Имитирует окончание игры
+window.onGameFinish = function () {
+  console.log("onGameFinish");
+};
+
 /**
  * Возвращает корневой элемент для рендеринга приложения
  */
@@ -131,6 +143,8 @@ function onAppReadyHandler(app) {
     userNotAuthorized: !window.userAuthorized,
     // Указать, действует ли еще акция или нет
     activityIsOver: window.activityIsOver,
+    gameStartHandler: window.onGameStart,
+    gameFinishHandler: window.onGameFinish,
   };
 
   // Передается номер текущей игры (внутри приложения игры идентифицируются по номерам)

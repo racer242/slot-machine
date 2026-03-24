@@ -64,17 +64,27 @@ class GamePage extends Component {
 
   registerStart() {
     if (this.state.userNotAuthorized) return;
+    this.state.gameStartHandler();
     this.store.dispatch(
       setStoreData({
         requestStart: {
           request: this.state.gameData.request1,
           data: { play: true },
+          additionalData: { startRegistered: true },
         },
       }),
     );
   }
 
-  registerFinish() {}
+  registerFinish() {
+    this.state.gameFinishHandler();
+
+    this.store.dispatch(
+      setStoreData({
+        startRegistered: false,
+      }),
+    );
+  }
 
   setState(data) {
     data.countdown = this.countdown;

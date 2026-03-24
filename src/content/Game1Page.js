@@ -61,7 +61,7 @@ class Game1Page extends GamePage {
 
   doAfterStoreChange(state) {
     if (!this.initialized) {
-      if (state?.gameCredentials) {
+      if (state?.startRegistered) {
         if (state?.gameCredentials.prize) {
           this.initialized = true;
           let value = this.getRandomValue();
@@ -209,7 +209,7 @@ class Game1Page extends GamePage {
 
   render() {
     // console.log(this.state.step, this.state);
-    console.log(this.state.step);
+    // console.log(this.state.step);
 
     let giftParticles = [];
     if (this.state.showWin) {
