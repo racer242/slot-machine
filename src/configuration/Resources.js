@@ -48,6 +48,7 @@ const common = [
   require("../images/gift-particles/particle7.svg"),
   require("../images/gift-particles/particle8.svg"),
   require("../images/gift-particles/particle9.svg"),
+  require("../images/attempts-over.png"),
 ];
 
 const resources = {

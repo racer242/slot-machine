@@ -105,7 +105,7 @@ class Game1Page extends GamePage {
       }
     } else if (step === "start") {
       count++;
-      if (count > 6) {
+      if (count > 4) {
         step = "finish1";
         count = 0;
         state = {
@@ -116,7 +116,7 @@ class Game1Page extends GamePage {
       }
     } else if (step === "finish1") {
       count++;
-      if (count > 2) {
+      if (count > 3) {
         step = "finish2";
         count = 0;
         state = {
@@ -127,7 +127,7 @@ class Game1Page extends GamePage {
       }
     } else if (step === "finish2") {
       count++;
-      if (count > 2) {
+      if (count > 3) {
         step = "finish3";
         count = 0;
         state = {
@@ -138,7 +138,7 @@ class Game1Page extends GamePage {
       }
     } else if (step === "finish3") {
       count++;
-      if (count > 8) {
+      if (count > 3) {
         if (state.win) {
           step = "showWin";
           count = 0;
@@ -152,7 +152,7 @@ class Game1Page extends GamePage {
       }
     } else if (step === "showWin") {
       count++;
-      if (count > 10) {
+      if (count > 7) {
         step = "gameOver";
         count = 0;
         state = {

@@ -39,26 +39,27 @@ class FailPage extends Component {
           </p>
         </div>
 
-        {this.state.gameCredentials?.attemptsLeft > 0 && (
-          <div className="button-group">
-            <div
-              className="secondary-button large appear-bottom delay300ms"
-              onClick={this.closeButton_clickHandler}
-            >
-              Играть позже
-            </div>
-            {this.state.gameCredentials?.attemptsLeft > 0 && (
+        {this.state.gameCredentials?.attemptsLeft > 0 &&
+          window.gameAttempts > 0 && (
+            <div className="button-group">
+              <div
+                className="secondary-button large appear-bottom delay300ms"
+                onClick={this.closeButton_clickHandler}
+              >
+                Играть позже
+              </div>
+
               <div
                 className="primary-button large inverted appear-bottom"
                 onClick={this.startButton_clickHandler}
               >
                 Играть еще
               </div>
-            )}
-          </div>
-        )}
+            </div>
+          )}
 
-        {this.state.gameCredentials?.attemptsLeft <= 0 && (
+        {(this.state.gameCredentials?.attemptsLeft <= 0 ||
+          window.gameAttempts <= 0) && (
           <div className="button-group inverted">
             <p className="appear-bottom caps">
               Чтобы сыграть ещё раз,

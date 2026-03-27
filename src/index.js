@@ -64,25 +64,3 @@ window.restartGameApp = () => {
   window.deactivateGameApp();
   setTimeout(window.activateGameApp, 0);
 };
-
-// const rootElement = window.getAppRoot?.();
-
-// if (!rootElement) {
-//   console.error("DataMatrix Scanner: корневой элемент #root не найден в DOM");
-// } else {
-//   const root = ReactDOM.createRoot(rootElement);
-//   root.render(
-//     <React.StrictMode>
-//       <App
-//         id="brandApp"
-//         onInit={window[rootElement.getAttribute("oninit")]}
-//         onImage={window[rootElement.getAttribute("onimage")]}
-//         onImages={window[rootElement.getAttribute("onimages")]}
-//       />
-//     </React.StrictMode>,
-//   );
-// }
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();

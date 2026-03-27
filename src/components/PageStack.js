@@ -3,6 +3,7 @@ import Game1Page from "../content/Game1Page";
 import Main1Page from "../content/Main1Page";
 import WinPage from "../content/WinPage";
 import FailPage from "../content/FailPage";
+import AttemptsOverPage from "../content/AttemptsOverPage";
 
 class PageStack extends Component {
   constructor(props) {
@@ -12,7 +13,11 @@ class PageStack extends Component {
       this.state = {
         ...this.store.getState(),
       };
-    } else this.state = { currentPage: "main" };
+    } else {
+      this.state = {
+        currentPage: window.gameAttempts > 0 ? "main" : "attemptsOver",
+      };
+    }
   }
 
   componentDidMount() {
@@ -63,6 +68,10 @@ class PageStack extends Component {
         )}
         {this.state.currentPage === "fail" && (
           <FailPage bounds={this.props.bounds} store={this.store} />
+        )}
+
+        {this.state.currentPage === "attemptsOver" && (
+          <AttemptsOverPage bounds={this.props.bounds} store={this.store} />
         )}
       </div>
     );

@@ -16,7 +16,7 @@ const settings = {
     height: 470,
   },
   switchToMobileWidth: 720,
-  currentPage: "main",
+  currentPage: window.gameAttempts > 0 ? "main" : "attemptsOver",
   particlesCount: 20,
 };
 

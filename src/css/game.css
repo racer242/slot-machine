@@ -88,7 +88,7 @@
 
 .leverRotate {
   animation: leverRotate 1000ms 2 ease-in-out alternate;
-  animation-delay: 2s;
+  animation-delay: 1s;
 }
 @keyframes leverRotate {
   0% {
@@ -101,7 +101,7 @@
 
 .handleMotion {
   animation: handleMotion 1000ms 2 alternate cubic-bezier(0.15, 0.15, 0.32, 0.8);
-  animation-delay: 2s;
+  animation-delay: 1s;
 }
 @keyframes handleMotion {
   0% {
@@ -155,11 +155,11 @@
 
 .slotsWaitingMotion {
   animation: slotsMotion 1s linear infinite;
-  animation-delay: 2500ms;
+  animation-delay: 1000ms;
 }
 
 .slotsMotion {
-  animation: slotsMotion 3250ms ease-out;
+  animation: slotsMotion 1350ms ease-out;
 }
 @keyframes slotsMotion {
   0% {
