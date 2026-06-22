@@ -6,6 +6,10 @@ class Game1Page extends GamePage {
   constructor(props) {
     super(props);
 
+    this.sequence1 = [0, 1, 2, 3, 4, 5, 6];
+    this.sequence2 = [5, 4, 1, 0, 3, 6, 2];
+    this.sequence3 = [2, 5, 3, 6, 4, 1, 0];
+
     let offsets = this.getRandomOffsets();
 
     this.state = {
@@ -24,19 +28,25 @@ class Game1Page extends GamePage {
       count: 0,
     };
 
-    this.sequence1 = [0, 1, 2, 3, 4, 5, 6];
-    this.sequence2 = [5, 4, 1, 0, 3, 6, 2];
-    this.sequence3 = [2, 5, 3, 6, 4, 1, 0];
-
     this.initialized = false;
-  }
-
-  getRandomOffset() {
-    return -76 * Math.floor(Math.random() * 7) - 2 * 76;
   }
 
   getRandomValue() {
     return Math.floor(Math.random() * 7);
+  }
+
+  getRandomValues() {
+    let vals;
+    let i = 0;
+    do {
+      vals = {
+        v1: this.getRandomValue(),
+        v2: this.getRandomValue(),
+        v3: this.getRandomValue(),
+      };
+      i++;
+    } while (vals.v1 === vals.v2 && vals.v1 === vals.v3 && vals.v2 === vals.v3);
+    return vals;
   }
 
   getRelativeOffset(offset, sequence) {
@@ -44,19 +54,12 @@ class Game1Page extends GamePage {
   }
 
   getRandomOffsets() {
-    let offsets;
-    do {
-      offsets = {
-        offset1: this.getRandomOffset(),
-        offset2: this.getRandomOffset(),
-        offset3: this.getRandomOffset(),
-      };
-    } while (
-      offsets.offset1 === offsets.offset2 &&
-      offsets.offset1 === offsets.offset3 &&
-      offsets.offset2 === offsets.offset3
-    );
-    return offsets;
+    let vals = this.getRandomValues();
+    return {
+      offset1: this.getRelativeOffset(vals.v1, this.sequence1),
+      offset2: this.getRelativeOffset(vals.v2, this.sequence2),
+      offset3: this.getRelativeOffset(vals.v3, this.sequence3),
+    };
   }
 
   doAfterStoreChange(state) {
@@ -81,6 +84,7 @@ class Game1Page extends GamePage {
             offsets: this.getRandomOffsets(),
           };
         }
+
         state = {
           ...state,
           step: "start",
